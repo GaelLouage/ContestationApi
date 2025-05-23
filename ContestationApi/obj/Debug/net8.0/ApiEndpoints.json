@@ -1,0 +1,29 @@
+[
+  {
+    "ContainingType": "ContestationApi.Controllers.PdfController",
+    "Method": "GetPdfBase64String",
+    "RelativePath": "Pdf",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fineNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Infra.Dtos.PdfDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetPdfBase64String"
+  }
+]
