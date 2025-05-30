@@ -1,0 +1,129 @@
+[
+  {
+    "ContainingType": "ContestationApi.Controllers.PdfController",
+    "Method": "GetPdfBase64String",
+    "RelativePath": "api/Pdf",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fineNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Infra.Dtos.PdfDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetPdfBase64String"
+  },
+  {
+    "ContainingType": "ContestationApi.Controllers.PdfController",
+    "Method": "GetOpposers",
+    "RelativePath": "api/Pdf/GetOppossers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ContestationApi.Controllers.PdfController",
+    "Method": "GetPdfByFineNumber",
+    "RelativePath": "api/Pdf/GetPdfByFineNumber",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fineNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ContestationApi.Controllers.PdfController",
+    "Method": "GetResponseByFineNumber",
+    "RelativePath": "api/Pdf/GetResponseByFineNumber",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fineNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ContestationApi.Controllers.PdfController",
+    "Method": "GetResponses",
+    "RelativePath": "api/Pdf/GetResponses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ContestationApi.Controllers.PdfController",
+    "Method": "InsertResponseType",
+    "RelativePath": "api/Pdf/InsertResponseType",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "responseDto",
+        "Type": "Infra.Dtos.ResponseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ContestationApi.Controllers.PdfController",
+    "Method": "UpdateResponseType",
+    "RelativePath": "api/Pdf/UpdateResponseType",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "responseDto",
+        "Type": "Infra.Dtos.ResponseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ContestationApi.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "api/User/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "Infra.Dtos.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

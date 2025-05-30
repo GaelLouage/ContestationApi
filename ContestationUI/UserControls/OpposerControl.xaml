@@ -1,0 +1,224 @@
+﻿<UserControl x:Class="ContestationUI.UserControls.OpposerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ContestationUI.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1000">
+    <Grid Loaded="Grid_Loaded">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Search:" 
+                   Grid.Row="0" Grid.Column="3"
+     Padding="0,5"                           
+
+     Margin="10" 
+     HorizontalAlignment="Right"
+                   />
+        <TextBox x:Name="txtUserName" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="4"
+     Padding="0,5"                           
+     Width="300"
+     Margin="10" 
+     BorderThickness="0,0,0,1"
+     HorizontalAlignment="center" TextChanged="txtUserName_TextChanged"/>
+        <ListView x:Name="OpposersListView" Margin="12,10,8,10" Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" SelectionChanged="OpposersListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <!-- Modified Decision Column -->
+                    <GridViewColumn Header="Decision" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Padding="4" CornerRadius="2">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding DecisionType}" Value="ACCEPTED">
+                                                    <Setter Property="Background" Value="LightGreen"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding DecisionType}" Value="REJECTED">
+                                                    <Setter Property="Background" Value="LightCoral"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding DecisionType}" Value="NONE">
+                                                    <Setter Property="Background" Value="LightGray"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <TextBlock Text="{Binding DecisionType}" 
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="SemiBold"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <!-- Unchanged columns -->
+                    <GridViewColumn Header="Fine #" DisplayMemberBinding="{Binding FineNumber}" Width="100"/>
+                    <GridViewColumn Header="Full Name" DisplayMemberBinding="{Binding FullName}" Width="150"/>
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="150"/>
+                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}" Width="100"/>
+                    <GridViewColumn Header="City" DisplayMemberBinding="{Binding City}" Width="100"/>
+                    <GridViewColumn Header="Issue Date" DisplayMemberBinding="{Binding FineIssueDate}" Width="100"/>
+                    <GridViewColumn Header="Reason" DisplayMemberBinding="{Binding ReasonForFine}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <GroupBox Header="Contestation" Grid.Row="4" Margin="10" Grid.ColumnSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Fine #: " Grid.Column="0"/>
+                <TextBlock x:Name="txtFineNumber" Text="..." Grid.Column="1"/>
+                <TextBlock Text="ReasonForContestation: " Grid.Column="0" Grid.Row="1"/>
+                <TextBlock x:Name="txtReasonForContestation" Text="..."  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"/>
+                <TextBlock Text="Notes: " Grid.Column="0" Grid.Row="2"/>
+                <TextBox x:Name="txtNotes" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"
+Padding="0,5"                       
+Width="300"
+VerticalAlignment="Top" 
+HorizontalAlignment="Left"
+BorderThickness="0,0,0,1"
+/>
+
+                <ComboBox x:Name="cmbDecisionType"  Margin="0,20,0,0"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" />
+
+                <Button x:Name="BtnDecision" 
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Content="Submit" 
+                          Cursor="Hand"
+                          Grid.Row="4"
+                          Grid.Column="0" Grid.ColumnSpan="3"
+                          Foreground="White"
+                          Background="Black"
+                          Margin="0,25"
+                          Height="35"
+                          Width="150" Click="BtnDecision_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="LoginBorder" Background="{TemplateBinding Background}"
+                          CornerRadius="16">
+                                            <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="AliceBlue" TargetName="LoginBorder"  />
+                                                <Setter Property="TextBlock.Foreground" Value="Black"  TargetName="LoginBorder" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </GroupBox>
+
+        <TextBlock x:Name="txtAmount" Text="..." Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="Bold"/>
+
+        <Button x:Name="BtnDownload" 
+              Grid.Row="3"
+Grid.Column="4"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+  Content="Download" 
+  Cursor="Hand"
+  Foreground="White"
+  Background="Black"
+  Margin="0,25"
+  Height="35"
+  Width="150" Click="BtnDownload_Click"  >
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="LoginBorder" Background="{TemplateBinding Background}"
+                          CornerRadius="16">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="AliceBlue" TargetName="LoginBorder"  />
+                                        <Setter Property="TextBlock.Foreground" Value="Black"  TargetName="LoginBorder" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+
+
+
+        <Button x:Name="BtnExit" 
+              Grid.Row="3"
+Grid.Column="5"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+
+  Content="Exit" 
+  Cursor="Hand"
+  Foreground="White"
+  Background="Black"
+  Margin="0,25"
+  Height="35"
+  Width="150" Click="BtnExit_Click"  >
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="LoginBorder" Background="{TemplateBinding Background}"
+                          CornerRadius="16">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="AliceBlue" TargetName="LoginBorder"  />
+                                        <Setter Property="TextBlock.Foreground" Value="Black"  TargetName="LoginBorder" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <WebBrowser x:Name="PdfBrowser" Visibility="Hidden" Grid.Row="1" Grid.Column="2"/>
+    </Grid>
+</UserControl>
